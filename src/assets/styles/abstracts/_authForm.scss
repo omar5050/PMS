@@ -1,0 +1,43 @@
+@import "./colors";
+
+.background-design {
+  background-image: url(../../images/Desktop.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.auth-card {
+  background-color: $main-color-opacity;
+  border-radius: 15px;
+  padding: 1rem;
+
+  h3 {
+    color: $text-main;
+    position: relative;
+    margin-bottom: 1.5rem;
+    &::after {
+      content: "";
+      width: 13px;
+      height: 4px;
+      background-color: $text-main;
+      position: absolute;
+      top: 100%;
+      left: 1.5px;
+    }
+  }
+}
+mat-icon {
+  color: $main-color-opacity;
+}
+
+.myPointer {
+  cursor: pointer;
+}
+
+.custom-error-style {
+  color: #ff4949;
+  margin: 4px auto;
+  font-size: 0.8rem;
+}

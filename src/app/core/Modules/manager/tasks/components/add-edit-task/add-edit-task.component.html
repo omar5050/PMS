@@ -1,0 +1,78 @@
+<section>
+    <div class="title-page shadow px-5">
+      <div>
+        <a class="text-decoration-none text-dark" routerLink="/core/dashboard/manager/tasks"><span><span><i
+                class="fa-solid fa-angle-left"></i></span>View All Tasks</span></a>
+        <h2>
+          Add New Task
+        </h2>
+      </div>
+  
+    </div>
+  
+    <div class="card-form w-75 mx-auto my-3 shadow-sm">
+  
+      <form [formGroup]="taskForm" (ngSubmit)="onSubmit(taskForm)">
+        <div class="form-item">
+          <div class="mb-3">
+            <label id="title" for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" formControlName="title" class="form-control rounded-4" id="exampleFormControlInput1"
+              placeholder="name">
+          </div>
+          <div *ngIf="taskForm.get('title')?.errors && taskForm.get('title')?.touched"
+            class="text-red m-0 mx-auto p-0  alert alert-light text-center w-50 text-danger mb-4" role="alert">
+            <span class="text-red" *ngIf="taskForm.get('title')?.getError('required')">title is Required</span>
+          </div>
+        </div>
+        <div class="form-item">
+  
+          <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Description</label>
+            <textarea type="text" formControlName="description" class="form-control rounded-4"
+              id="exampleFormControlInput2" placeholder="Description"></textarea>
+          </div>
+          <div *ngIf="taskForm.get('description')?.errors && taskForm.get('description')?.touched"
+            class="text-red m-0 mx-auto p-0  alert alert-light text-center w-50 text-danger mb-4" role="alert">
+            <span class="text-red" *ngIf="taskForm.get('description')?.getError('required')">description is
+              Required</span>
+  
+          </div>
+        </div>
+
+        <div class="form-item d-flex justify-content-between">
+            <!-- <label for="exampleFormControlInput2" class="form-label">Employee</label> -->
+            <mat-form-field class="w-25">
+                <mat-label>Users</mat-label>
+                <mat-select formControlName="employeeId" >
+                  <mat-option *ngFor="let item of tableDataUsers" [value]="item.id">
+                    {{item.userName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <!-- <label for="exampleFormControlInput2" class="form-label">Project</label> -->
+              <mat-form-field class="w-25">
+                <mat-label>Projects</mat-label>
+                <mat-select formControlName="projectId">
+                  <mat-option *ngFor="let item of tableDataManager" [value]="item.id">
+                    {{item.title}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <hr class="mt-5">
+        <div class="d-flex justify-content-between">
+          <button class="main-outline w-25" routerLink="/core/dashboard/manager/tasks" type="button">Cancel</button>
+          <button class="main w-25" >Save</button>
+        </div>
+      </form>
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  </section>
+  

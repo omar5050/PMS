@@ -1,0 +1,26 @@
+.opened {
+  div{
+  transition: all .3s ease-in-out;
+}
+}
+
+
+.custom-col-1 {
+  flex: 0 0 5.333333%;
+  max-width: 5.333333%;
+}
+
+.custom-col-2 {
+  flex: 0 0 13.666667%;
+  max-width: 13.666667%;
+}
+
+.custom-col-11 {
+  flex: 0 0 94.666667%;
+  max-width: 94.666667%;
+}
+
+.custom-col-10 {
+  flex: 0 0 86.333333%;
+  max-width: 86.333333%;
+}

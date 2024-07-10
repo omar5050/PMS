@@ -1,0 +1,111 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Project-Management-System-primary: mat.define-palette(
+  mat.$yellow-palette,
+  800
+);
+$Project-Management-System-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
+
+// The warn palette is optional (defaults to red).
+$Project-Management-System-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$Project-Management-System-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $Project-Management-System-primary,
+      accent: $Project-Management-System-accent,
+      warn: $Project-Management-System-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($Project-Management-System-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import "/src/assets/styles/abstracts/dropzone-profile";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.title-page {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // text-align: 1rem 0px;
+  color: #0e382f;
+  padding: 20px 10px;
+  button {
+    span {
+      margin: 0px 5px;
+    }
+    width: 202px;
+    height: 40px;
+    background-color: #ef9b28;
+    border-radius: 32px;
+    color: #fff;
+    border: none;
+    margin: 20px 10px;
+  }
+}
+
+.table-container {
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 1rem 0px;
+
+  .table {
+    thead {
+      background-color: rgba(49, 89, 81, 0.9);
+      height: 38px !important;
+
+      color: #fff;
+      width: 100% !important;
+
+      th {
+        font-size: 20px;
+        padding: 5px;
+        text-transform: capitalize;
+        border-left: 2px solid #315951;
+        border-right: 2px solid #315951;
+      }
+    }
+  }
+}
+
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//   background-color: transparent !important;
+// }
+
+.form-select:focus,
+.form-control:focus{
+  border-color: rgb(239, 155, 40);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(239, 155, 40,.4);
+}

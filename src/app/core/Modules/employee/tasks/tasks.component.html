@@ -1,0 +1,48 @@
+<section>
+  <div class="title-page shadow px-5">
+    <h2>Tasks</h2>
+    <a class="main d-flex justify-content-center align-items-center gap-2" [routerLink]="'../../'">
+      <span>Back</span>
+      <i class="fa-solid fa-arrow-rotate-left"></i>
+    </a>
+  </div>
+  <div class="container">
+    <div cdkDropListGroup>
+      <div class="row">
+        <div class="col-4">
+          <div class="example-container">
+            <h5>To Do</h5>
+            <div cdkDropList [cdkDropListData]="todo" class="example-list" cdkDropListSortingDisabled
+              (cdkDropListDropped)="drop($event)" id="ToDo">
+              <div class="example-box" id={{item.id}} [cdkDragData]="item.id" *ngFor="let item of todo" cdkDrag>
+                {{item.title}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="example-container">
+            <h5>In Progress</h5>
+            <div cdkDropList [cdkDropListData]="inprogress" class="example-list" (cdkDropListDropped)="drop($event)"
+              id="InProgress">
+              <div class="example-box" id={{item.id}} [cdkDragData]="item.id" *ngFor="let item of inprogress" cdkDrag>
+                {{item.title}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="example-container">
+            <h5>Done</h5>
+            <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)"
+              id="Done">
+              <div class="example-box" id={{item.id}} [cdkDragData]="item.id" *ngFor="let item of done" cdkDrag>
+                {{item.title}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

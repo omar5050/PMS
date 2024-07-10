@@ -1,0 +1,33 @@
+#home {
+    background-image: url('../../../../../../assets/images/home-bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: #009247;
+    border-radius: 15px;
+    margin-top: 1rem;
+    padding-inline: 25px;
+    margin-inline: 25px;
+  }
+
+  .row_height {
+    height: 45vh;
+  }
+
+  .text-name {
+    font-size: 36px;
+    color: #EF9B28;
+  }
+
+  // .bg_home {
+  //   background-color: rgb(243, 243, 243);
+  // }
+
+  .by_chart {
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+  }
+
+  .bg-light {
+    background-color: rgb(238, 238, 238) !important;
+  }

@@ -1,0 +1,158 @@
+<section class="background-design">
+  <div class="container-fluid ">
+    <div class="row d-flex justify-content-center align-items-center ">
+      <div class="col-md-11">
+        <div class="">
+          <div class="text-center ">
+            <img src="../../../../assets/images/logo.svg" alt="">
+          </div>
+
+          <form [formGroup]="registerForm" (ngSubmit)="onRegister(registerForm)" class="auth-card px-3 ">
+
+            <div class="container">
+              <span class=" text-white">Welcome to PMS</span>
+              <h3>Create new Account</h3>
+
+              <ngx-dropzone [multiple]="false" no_multiple (change)="onSelect($event)">
+                <div
+                  [class]="!profileImgValue ? 'label_custom-style d-flex justify-content-center align-items-center ' : 'visually-hidden'">
+                  <ngx-dropzone-label>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                      stroke="currentColor" className="w-6 h-6" class="w-50">
+                      <path strokeLinecap="round" strokeLinejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+
+                    <p>
+                      Choose Image Profile
+                    </p>
+
+                  </ngx-dropzone-label>
+                </div>
+
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                  [removable]="true" (removed)="onRemove(f)">
+                  <ngx-dropzone-label></ngx-dropzone-label>
+                </ngx-dropzone-image-preview>
+
+
+              </ngx-dropzone>
+
+              <div class="row ">
+                <div class="col-md-6">
+                  <div class="form-item">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>User Name</mat-label>
+                      <input formControlName="userName" matInput placeholder="Enter Your Name" type="text">
+                      <mat-icon matSuffix>person</mat-icon>
+                      <mat-error *ngIf="registerForm.invalid"
+                        class="custom-error-style">{{getErrorMessageforName()}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-item">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Email</mat-label>
+                      <input type="email" formControlName="email" matInput placeholder="Enter Your Email">
+                      <mat-icon matSuffix>email</mat-icon>
+                      <mat-error *ngIf="registerForm.invalid"
+                        class="custom-error-style">{{getErrorMessageforEmail()}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mt-2">
+                  <div class="form-item">
+                    <mat-form-field class="w-100">
+                      <mat-label>Country</mat-label>
+                      <input formControlName="country" matInput type="text" placeholder="Enter Your Country">
+                      <button type="button" mat-icon-button matSuffix>
+                        <mat-icon>flag</mat-icon>
+                      </button>
+                      <mat-error *ngIf="registerForm.invalid"
+                        class="custom-error-style">{{getErrorMessageForCountry()}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mt-2">
+                  <div class="form-item">
+                    <mat-form-field class="w-100">
+                      <mat-label>Phone Number</mat-label>
+                      <input formControlName="phoneNumber" matInput type="tel" placeholder="Enter Your Phone Number">
+                      <button type="button" mat-icon-button matSuffix>
+                        <mat-icon>phone</mat-icon>
+                      </button>
+                      <mat-error *ngIf="registerForm.invalid"
+                        class="custom-error-style">{{getErrorMessageForPhoneNumber()}}</mat-error>
+                    </mat-form-field>
+
+                  </div>
+                </div>
+                <div class="col-md-6 mt-2">
+                  <div class="form-item">
+                    <mat-form-field class="w-100">
+                      <mat-label>Password</mat-label>
+                      <input formControlName="password" matInput [type]="hidePass ? 'password' : 'text'"
+                        placeholder="Enter Your Password">
+                      <button type="button" mat-icon-button matSuffix (click)="hidePass = !hidePass"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+                        <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                      <mat-error *ngIf="registerForm.invalid"
+                        class="custom-error-style">{{getErrorMessageforPasswrod()}}</mat-error>
+
+                    </mat-form-field>
+
+                  </div>
+                </div>
+                <div class="col-md-6 mt-2">
+                  <div class="form-item">
+                    <mat-form-field class="w-100">
+                      <mat-label>Confirm Password</mat-label>
+                      <input formControlName="confirmPassword" matInput [type]="hideConfirmPass ? 'password' : 'text'"
+                        placeholder="Confirm New Password">
+                      <button type="button" mat-icon-button matSuffix (click)="hideConfirmPass = !hideConfirmPass"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPass">
+                        <mat-icon>{{hideConfirmPass ? 'visibility_off' :
+                          'visibility'}}</mat-icon>
+                      </button>
+                      <mat-error class="custom-error-style"
+                        *ngIf="registerForm.get('confirmPassword')?.hasError('confirmPassword')">
+                        Passwords do not match
+                      </mat-error>
+                      <mat-error class="custom-error-style"
+                        *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
+                        Confirm Password is required
+                      </mat-error>
+                    </mat-form-field>
+
+                  </div>
+                </div>
+                <div class="col-md-6 mb-2 mt-2">
+                  <a routerLink="../" class=" text-decoration-none text-white myPointer ">Login
+                    Now ?</a>
+                </div>
+                <div class="col-md-6 text-end mb-2 mt-2">
+                  <a class=" text-decoration-none text-white myPointer " (click)="openDialog()">Verify
+                    Account?</a>
+                </div>
+              </div>
+              <div class="col-md-12 text-center mt-2">
+                <button type="submit" class="main w-25 text-white" [disabled]="registerForm.invalid">Register
+                  <span ><i class="fas text-white"></i></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</section>

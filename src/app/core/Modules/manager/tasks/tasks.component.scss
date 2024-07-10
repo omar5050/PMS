@@ -1,0 +1,15 @@
+.status{
+    border-radius: 16px;
+    padding: 0.4rem 1rem;
+    color: #fff;
+
+    &.todo{
+        background-color: #aeaac0;
+    }
+    &.inProgress{
+        background-color: rgba(239, 155, 40,0.64);
+    }
+    &.done{
+        background-color: #009247;
+    }
+}

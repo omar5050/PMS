@@ -1,0 +1,40 @@
+.card-form{
+    border-radius: 16px;
+    background-color: #fff;
+    padding: 2rem 1rem;
+}
+
+button{
+    span{
+        margin: 0px 5px;
+    }
+    width: 202px;
+    height: 40px;
+    border-radius: 32px;
+    border: none;
+    margin: 20px 10px;
+    &.main{
+        background-color: #EF9B28;
+        color: #fff;
+
+        &.hover{
+            opacity: 0.7;
+        }
+    }
+    &.main-outline{
+        background-color: #fff;
+       border: 1px solid #0e382f;
+        color: #0e382f;
+        &.hover{
+            opacity: 0.7;
+        }
+    }
+
+      &:disabled {
+        background-color: rgba(239, 155, 40, 0.5);
+        color: rgba(0,0, 0) ;
+        cursor: not-allowed;
+
+      }
+
+}

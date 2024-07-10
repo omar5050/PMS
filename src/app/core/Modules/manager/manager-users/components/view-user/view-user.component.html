@@ -1,0 +1,15 @@
+<section class="container py-3">
+
+    <a class="text-end d-block myPointer" (click)="onNoClick()"><i class="fa-regular fa-2x fa-circle-xmark text-danger"></i></a>
+
+    <div class="text-center ">
+        <img [src]="data.imagePath?imagePath+data.imagePath:dummyImage" class="w-25" alt="">
+        <h3>{{data.userName?data.userName:"No Name"}}</h3>
+        <p>{{data.email?data.email:"No Email"}}</p>
+        <hr>
+        
+    </div>
+    <div class="text-end">
+        <button class="btn main text-white w-25" [mat-dialog-close]="data.id">Close</button>
+    </div>
+</section>

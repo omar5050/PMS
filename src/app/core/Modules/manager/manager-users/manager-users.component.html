@@ -1,0 +1,64 @@
+<section>
+
+    <div class="title-page shadow px-5">
+        <h2>Users</h2>
+    </div>
+    <div class="table-container mt-5 mx-5">
+        <div class="w-25 px-3">
+            <input [(ngModel)]="searchKey" type="text" placeholder="Search By Name" class="form-control" (keyup.enter)="getAllUsers()">
+        </div>
+        <table class="table table-striped my-3">
+            <thead>
+                <th>User Name</th>
+                <th>Status</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of users">
+                    <td>{{item.userName}}</td>
+                    <td>
+                        <span class="status" [ngClass]="item.isActivated?'active':'notActive'">{{item.isActivated?'Active':'Not Active'}}</span>
+                    </td>
+                    <td>{{item.phoneNumber}}</td>
+                    <td>{{item.email}}</td>
+                    
+                    <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item  (click)="openUserDetailes(item)">
+                          <mat-icon >visibility</mat-icon>
+                          <span>View</span>
+                        </button>
+                        <button mat-menu-item (click)="openConfirmBlockDialog(item)">
+                          <mat-icon>block</mat-icon>
+                          <span>{{item.isActivated?'Block':'UnBlock'}}</span>
+                        </button>
+                      </mat-menu>
+                      </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <mat-paginator
+             [length]="tableResponse?.totalNumberOfRecords"
+              [pageSize]="tableResponse?.pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              [pageIndex]="tableResponse?.pageNumber"
+              (page)="handlePageEvent($event)"
+              aria-label="Select page">
+        </mat-paginator>
+        
+
+    </div>
+    <div *ngIf="users.length==0">
+
+        <div class=" text-center">
+          <img src="../../../../../assets/images/delete-img.svg" alt="">
+          <h5>Not Found</h5>
+        </div>
+      </div>
+
+</section>

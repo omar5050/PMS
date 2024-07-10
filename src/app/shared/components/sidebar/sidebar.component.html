@@ -1,0 +1,23 @@
+<section class="sticky">
+
+
+  <div class="py-3 px-1 text-center arrows" (click)="isOpened=!isOpened">
+    <i *ngIf="!isOpened" class="fa-solid fa-arrow-right"></i>
+    <i *ngIf="isOpened" class="fa-solid fa-arrow-left"></i>
+  </div>
+
+  <div class="pt-5">
+    <ul>
+
+      <ng-container *ngFor="let item of Menu">
+        <li *ngIf="item.isActive">
+          <a [routerLink]="item.link" routerLinkActive="bg-main-transparent">
+            <span [class]="isOpened?'text-center':''"><i [class]="item.icone"></i></span>
+            <span class="text-capitalize" *ngIf="isOpened">{{item.text}}</span>
+          </a>
+
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</section>

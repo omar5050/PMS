@@ -1,0 +1,45 @@
+<section [ngClass]="{'bg-light': rols=='Manager',}">
+  <div>
+    <div class="container">
+      <div id="home" class="row align-items-center justify-content-between row_height">
+        <div class="col-6 text-white">
+          <h2 class="my-5"><span>Welcome</span><span class="lead mx-3 text-name">{{userName}} </span></h2>
+          <p class="my-5">You can add project and assign tasks to your team</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="mt-5" [ngClass]="{'d-none': rols=='Employee',}">
+    <div class="container">
+      <div class="row justify-content-evenly align-items-end">
+        <div class="col-4 by_chart">
+          <h3 class="py-2">- Status Tasks.</h3>
+          <canvas id="canvas">{{chart}}</canvas>
+        </div>
+        <div class="col-4 by_chart">
+          <h3 class="py-2">- Status Projects.</h3>
+          <canvas id="newCanvas">{{newChart}}</canvas>
+        </div>
+      </div>
+      <div class="row justify-content-evenly align-items-center mt-4 px-5 by_chart w-75 mx-auto">
+        <div class="col-4 ">
+          <h3 class="py-2">
+            - All Data Info in website.
+          </h3>
+          <p class="py-4 h5">
+            you can check all data from this digram.
+          </p>
+        </div>
+        <div class="col-8 ">
+          <canvas id="allData">{{allDataNewChart}}</canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,40 @@
+<section>
+
+    <div class="title-page shadow px-5">
+      <h2>Projects</h2>
+    </div>
+    <div class="table-container mt-5 mx-5">
+      <div class="w-25 px-3">
+        <input [(ngModel)]="searchKey" type="text" placeholder="Search By Title" class="form-control" (keyup.enter)="getAllProjects()">
+      </div>
+      <table class="table table-striped my-3">
+        <thead class=" text-center">
+          
+          <th>Title</th>
+          <th>Tasks</th>
+          <th>Description</th>
+          <th>Created at</th>
+          <th>Modification date</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tableData" class=" text-center">
+            
+            <td>{{item.title}}</td>
+            <td>{{item.task.length}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.creationDate | date}}</td>
+            <td>{{item.modificationDate | date}}</td>
+          </tr>
+  
+        </tbody>
+      </table>
+      <mat-paginator [length]="tableResponse?.totalNumberOfRecords" [pageSize]="tableResponse?.pageSize"
+        [pageIndex]="tableResponse?.phoneNumber" [pageSizeOptions]="pageSizeOptions" (page)="handlePageEvent($event)"
+        aria-label="Select page">
+      </mat-paginator>
+  
+    </div>
+  
+  </section>
+  
+
