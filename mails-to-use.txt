@@ -1,0 +1,33 @@
+Admin
+mail: admin@mailna.co
+pass: admin@Admin2
+
+admin with profile picture
+1f8825d5eb@emailabox.pro
+admin@Admin3
+=========
+user
+mail: user@mailna.co
+Pass: user@User2
+
+
+
+api end point
+
+Users/currentUser (get) no paramter
+
+=======
+update user
+"errors": {
+      "email": [
+        "The email field is required."
+      ],
+      "country": [
+        "The country field is required."
+      ],
+      "phoneNumber": [
+        "The phoneNumber field is required."
+      ],
+      "confirmPassword": [
+        "The confirmPassword field is required."
+      ]
